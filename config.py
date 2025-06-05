@@ -1,2 +1,2 @@
-MONGO_URI = "mongodb+srv://adminagenda:Agenda2024!@agendacluster.mongodb.net/agendaapp?retryWrites=true&w=majority&appName=AgendaCluster"
+MONGO_URI = "mongodb+srv://AdminAgenda:Juancho21@agendacluster.t4pjwar.mongodb.net/?retryWrites=true&w=majority&appName=AgendaCluster"
 SECRET_KEY = "clave-secreta-para-flask"
