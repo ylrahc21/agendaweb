@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = SECRET_KEY
 
 client = MongoClient(MONGO_URI)
-db = client.agendaapp
+db = client.agenda_app
 
 # Estado de la app (colección: estado)
 def esta_apagada():
