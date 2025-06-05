@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Agenda</title></head>
+<body>
+    <h2>Bienvenido, {{ session.usuario }}</h2>
+    <p>Rol: {{ rol }}</p>
+
+    {% if rol in ['superusuario', 'admin'] %}
+    <h3>Crear Cita</h3>
+    <form method="POST" action="/crear_cita">
+        Nombre: <input name="nombre">
+        Teléfono: <input name="telefono">
+        Fecha: <input type="date" name="fecha">
+        Hora: <input type="time" name="hora">
+        Notas: <input name="notas">
+        <button type="submit">Guardar</button>
+    </form>
+    {% endif %}
+
+    <h3>Citas</h3>
+    <ul>
+        {% for cita in citas %}
+        <li>
+            {{ cita.nombre }} - {{ cita.fecha }} {{ cita.hora }} ({{ cita.telefono }})
+            {% if rol in ['superusuario', 'admin'] %}
+                <a href="/cancelar_cita/{{ cita._id }}">Cancelar</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% if rol == 'superusuario' %}
+    <form method="POST" action="/apagar_app">
+        <button name="estado" value="apagado">Apagar App</button>
+        <button name="estado" value="encendido">Encender App</button>
+    </form>
+    {% endif %}
+
+    <a href="/logout">Cerrar sesión</a>
+</body>
+</html>
